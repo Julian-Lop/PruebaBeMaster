@@ -1,0 +1,8 @@
+@use 'variables';
+
+@import 'mixins';
+@import 'animations.scss';
+@import './utils/init.scss';
+@import "./layouts/index.scss";
+@import './components/index.scss';
+@import "./pages/index.scss"

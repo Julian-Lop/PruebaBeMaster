@@ -1,0 +1,49 @@
+.NavbarMobile{
+  position: fixed;
+  bottom: 0;
+  display: none;
+  width: 100%;
+  height: 40px;
+
+  .Avatar{
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 2px solid variables.$gray-2;
+
+    &.active{
+      border: 2px solid variables.$gray-1;
+    }
+  }
+
+  .icon{
+    background: variables.$gray-2;
+    width: 24px;
+    height: 24px;
+  }
+
+  .icon-download, .icon-search{
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #191A1F;
+  }
+
+  li{
+    a.active{
+      .icon{
+        background: variables.$gray-1;
+      }
+    }
+  }
+
+  @include mobile{
+    display: flex;
+  }
+}

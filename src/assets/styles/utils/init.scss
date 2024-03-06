@@ -1,0 +1,45 @@
+*, 
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    font-size: 100%;
+    list-style-type: none;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none; /* Oculta el scrollbar */
+}
+
+@font-face {
+  font-family: 'NunitoSans_10pt-Bold';
+  src: url('/fonts/NunitoSans_10pt-Bold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NunitoSans_10pt-ExtraBold';
+  src: url('/fonts/NunitoSans_10pt-ExtraBold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NunitoSans_10pt-Regular';
+  src: url('/fonts/NunitoSans_10pt-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.swal2-popup {
+  font-family: 'NunitoSans_10pt-Bold' !important;
+}

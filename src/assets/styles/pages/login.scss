@@ -1,0 +1,26 @@
+.Login{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'NunitoSans_10pt-Bold';
+
+  .icon-logo-disney{
+    width: 148px;
+    height: 80px;
+    margin-bottom: 24px;
+  }
+
+  @include mobile{
+    
+    .icon-logo-disney{
+      width: 100px;
+      height: 55px;
+      margin-bottom: 20px;
+    }
+  }
+}

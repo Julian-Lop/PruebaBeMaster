@@ -1,0 +1,28 @@
+@keyframes showUnderline {
+  0%{
+    background: variables.$white;
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50%{
+    background: variables.$white;
+    opacity: 0.5;
+  }
+  100%{
+    background: variables.$white;
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes showProfile {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 50%;
+  }
+  100%{
+    opacity: 100%;
+  }
+}
