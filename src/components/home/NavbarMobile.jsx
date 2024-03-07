@@ -23,7 +23,7 @@ export const NavbarMobile = ({activeOptMenu }) => {
           </NavLink>
           </li>
         <li onClick={activeOptMenu}>
-          <img src="/images/spiderman.jpg" alt='profile' className='Avatar' />
+          <img src="/images/spiderman.webp" alt='profile' className='Avatar' />
         </li>
       </ul>
     </nav>

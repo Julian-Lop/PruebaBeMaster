@@ -8,27 +8,27 @@ import "slick-carousel/slick/slick-theme.css";
 // * Redux
 import { useSelector } from 'react-redux';
 
+function CustomSlide(props) {
+  const { index, movie, ...otherProps } = props;
+  return (
+    <div {...otherProps} >
+      <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt='image' />
+      <div className='Mask'></div>
+      <div className='Info-container'>
+        <h2>
+          {movie.original_title}
+        </h2>
+        <p>
+          {movie.overview}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export const SliderHome = () => {
 
   const movies = useSelector(state => state.movies.marvelmovies) 
-
-  function CustomSlide(props) {
-    const { index, movie, ...otherProps } = props;
-    return (
-      <div {...otherProps} key={index} >
-        <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt='image' />
-        <div className='Mask'></div>
-        <div className='Info-container'>
-          <h2>
-            {movie.original_title}
-          </h2>
-          <p>
-            {movie.overview}
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   const settings = {
     className: "center",
@@ -47,7 +47,7 @@ export const SliderHome = () => {
       <Slider {...settings}>
         {
           movies.map((movie, i) => (
-            i < 5 && <CustomSlide index={1} movie={movie} className='CardSlider' />
+            i < 5 && <CustomSlide index={1} movie={movie} className='CardSlider' key={i+'slidehome'} />
           ))
         }
       </Slider>

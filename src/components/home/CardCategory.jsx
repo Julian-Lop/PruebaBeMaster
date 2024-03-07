@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-export const CardCategory = ({image,vid}) => {
+// * React-router
+import { useNavigate } from 'react-router-dom';
+
+export const CardCategory = ({ image, vid, category }) => {
+  
+  const naviagte = useNavigate()
 
   const videoRef = useRef(null);
 
@@ -19,6 +24,7 @@ export const CardCategory = ({image,vid}) => {
       className='CardCategory'
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => naviagte('/category/'+category)}
     >
       <img src={image} alt='disneyimage' className='Card-category-image' />
       <video
