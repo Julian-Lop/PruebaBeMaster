@@ -29,9 +29,9 @@ function CustomSlide(props) {
   );
 }
 
-export const SliderCardMovie = () => {
+export const SliderCardMovie = ({category = 'marvel', page = 1}) => {
 
-  const movies = useSelector(state => state.movies.marvelmovies)
+  const movies = useSelector(state => state.movies[category+'movies'])
 
   var settings = {
     infinite: false,
@@ -73,7 +73,7 @@ export const SliderCardMovie = () => {
       <Slider {...settings}>
         {
           movies.map((movie, i) => (
-            i < 15 && <CustomSlide index={1} movie={movie} className='CardMovie' key={i+'slidemovie'} />
+            ((i >= ((page-1)*12) )) && (( i < (12*page) )) && <CustomSlide index={1} movie={movie} className='CardMovie' key={i+'slidemovie'} />
           ))
         }
       </Slider>

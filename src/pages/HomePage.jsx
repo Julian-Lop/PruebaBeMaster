@@ -25,12 +25,12 @@ const srcCategories = [
     vid:'/videos/marvel.mp4'
   },
   {
-    name: 'start-wars',
+    name: 'starwars',
     image:'/images/star-wars.webp',
     vid:'/videos/star-war.mp4'
   },
   {
-    name: 'national-geographic',
+    name: 'natgeo',
     image:'/images/geographic.webp',
     vid:'/videos/geographic.mp4'
   },

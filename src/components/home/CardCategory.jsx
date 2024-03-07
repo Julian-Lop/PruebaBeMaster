@@ -29,7 +29,8 @@ export const CardCategory = ({ image, vid, category }) => {
       <img src={image} alt='disneyimage' className='Card-category-image' />
       <video
         src={vid}
-        mute loop
+        muted
+        loop
         className='Card-category-video'
         ref={videoRef}
       ></video>
