@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 // * Redux
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // * Actions
 import { getAllMovies, getMoviesByCategory } from '../app/features/movies/asyncThunks'
 import { SliderHome } from '../components/home/SliderHome'
@@ -38,11 +38,15 @@ const srcCategories = [
 
 export const HomePage = () => {
 
+  const movies = useSelector(state => state.movies)
+
   // ? Dispatch action for get movies
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getMoviesByCategory('marvel'))
+    if (!movies.marvelmovies.length) {
+      dispatch(getMoviesByCategory('marvel'))
+    }
   },[])
 
   return (

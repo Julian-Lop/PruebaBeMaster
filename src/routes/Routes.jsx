@@ -5,23 +5,11 @@ import { CategoryPage, HomePage, LoginPage, NotFoundPage, RegisterPage } from ".
 
 // * Components
 import { AuthLayout } from "../components"
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/firebase.config";
 import { Layout } from "../components/layouts/Layout";
+import { MoviePage } from "../pages/MoviePage";
 
-
-// ? Middleware for private routes with Firebase Authentication
-export function isAuthenticated() {
-  return new Promise((resolve, reject) => {
-      const unsubscribe = onAuthStateChanged(auth, user => {
-        unsubscribe();
-          resolve(user);
-      }, error => {
-          unsubscribe();
-          reject(error);
-      });
-  });
-}
+// * Action
+import { isAuthenticated } from "../app/features/auth/asyncThunks";
 
 // * Routes
 const router = createBrowserRouter(
@@ -54,6 +42,15 @@ const router = createBrowserRouter(
             else throw redirect('/auth/login')
           },
           element: <CategoryPage />
+        },
+        {
+          path: '/movie/:id',
+          loader: async () => {
+            const res = await isAuthenticated()
+            if (res) return true
+            else throw redirect('/auth/login')
+          },
+          element: <MoviePage />
         },
       ]
     },

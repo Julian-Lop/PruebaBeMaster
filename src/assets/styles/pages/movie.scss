@@ -1,0 +1,248 @@
+.MoviePage{
+  animation: fade 0.25s ease-in;
+}
+
+.Content-details{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 30px auto 0 auto;
+}
+
+.Content-details-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
+
+  @include mobile{
+    position: absolute;
+    top: 0;
+    -webkit-mask-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 1)
+    );
+    mask-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 1)
+    );
+  }
+}
+
+.Content-details-info{
+  position: absolute;
+  width: 90%;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  h1{
+    font-size: 40px;
+    font-family: variables.$font3;
+    color: variables.$white;
+    margin-top: 15vh;
+    margin-bottom: 20px;
+
+    @include mobile{
+      margin-top: 0;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+  }
+
+  p{
+    width: 60%;
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: 0.5px;
+    font-family: variables.$font1;
+    color: variables.$white;
+    opacity: 0.9;
+
+    @include mobile{
+      width: 100%;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: 0.2px;
+    }
+  }
+
+  @include mobile{
+    position: relative;
+    padding-bottom: 60px;
+    padding-top: 40%;
+  }
+}
+
+.Content-releasedata-and-runtime{
+  width: 50%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include mobile{
+    height: 22px;
+  }
+}
+
+.Item-release-runtime{
+  position: relative;
+  font-size: 16px;
+  font-family: variables.$font2;
+  color: variables.$white;
+  opacity: 0.9;
+
+  &:last-of-type{
+
+    &::after{
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      background: variables.$white;
+      border-radius: 100%;
+
+      @include mobile{
+        width: 4px;
+        height: 4px;
+        top: 7px;
+      }
+    }
+  }
+
+  @include mobile{
+    font-size: 14px;
+  }
+}
+
+.Content-genres{
+  margin-bottom: 24px;
+
+  ul{
+    display: flex;
+    font-family: variables.$font1;
+    color: variables.$white;
+    opacity: 0.8;
+    gap: 5px;
+
+    @include mobile{
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.Content-buttons-details{
+  width: 400px;
+  margin-bottom: 32px;
+
+  @include mobile{
+    width: 100%;
+    margin-bottom: 22px;
+  }
+}
+
+.Buttons-opts{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+
+  @include mobile{
+    width: 100%;
+  }
+}
+
+.Btn-three{
+  font-size: 24px;
+  font-family: variables.$font3;
+  text-transform: uppercase;
+  color: variables.$blackfont;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 0;
+  width: 100%;
+  background-color: variables.$white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: .2s;
+
+  .icon{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    background: variables.$blackfont;
+
+    @include mobile{
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &:hover{
+    transform: scale(0.95);
+    background-color: rgba(variables.$white,.75);
+  }
+
+  @include mobile{
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+}
+
+.Btn-opt{
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-family: variables.$font1;
+  color: variables.$gray-1;
+  cursor: pointer;
+  transition: .2s;
+
+  .icon{
+    background: variables.$gray-1;
+
+    @include mobile{
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &:hover{
+    color: variables.$white;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+
+    .icon{
+      background: variables.$white;
+    }
+  }
+
+  @include mobile{
+    width: 60px;
+    font-size: 12px;
+  }
+}

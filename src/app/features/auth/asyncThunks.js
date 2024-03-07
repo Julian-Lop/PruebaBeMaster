@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // * Firebase Authenticate Service
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
 
 // * Async functions (async ations)
@@ -24,3 +24,28 @@ export const signoutUser = createAsyncThunk('signout', async () => {
   const response = await signOut(auth)
   return true
 })
+
+export const isAuth = createAsyncThunk('isauth', async () => {
+  return await new Promise((resolve, reject) => {
+      const unsubscribe = onAuthStateChanged(auth, user => {
+        unsubscribe();
+          resolve(user);
+      }, error => {
+          unsubscribe();
+          reject(error);
+      });
+  });
+})
+
+// ? Middleware for private routes with Firebase Authentication
+export const isAuthenticated = () => {
+  return new Promise((resolve, reject) => {
+      const unsubscribe = onAuthStateChanged(auth, user => {
+        unsubscribe();
+          resolve(user);
+      }, error => {
+          unsubscribe();
+          reject(error);
+      });
+  });
+}

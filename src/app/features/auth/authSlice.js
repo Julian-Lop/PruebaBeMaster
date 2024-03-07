@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // * Async thunks
-import { loginUser, registerUser, signoutUser } from "./asyncThunks";
+import { isAuth, loginUser, registerUser, signoutUser } from "./asyncThunks";
 
 // ? Request Status
 // status: 'idle' | 'loading' | 'succeeded' | 'failed',
@@ -63,6 +63,17 @@ export const authSlice = createSlice({
         state.status = 'idle'
       })
       .addCase(signoutUser.rejected, (state, action) => {
+        state.status = 'failed'
+      })
+    builder
+      .addCase(isAuth.pending, (state, action) => {
+        state.status = 'loading'
+      })
+      .addCase(isAuth.fulfilled, (state, action) => {
+        state.status = 'idle'
+        state.email = action.payload.email
+      })
+      .addCase(isAuth.rejected, (state, action) => {
         state.status = 'failed'
       })
   }

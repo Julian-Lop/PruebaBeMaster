@@ -36,13 +36,13 @@ export const Header = () => {
           </li>
 
           <li>
-            <Link to='/category/movies'>
+            <Link to='/'>
               <p>Películas</p>
             </Link>
           </li>
 
           <li>
-            <Link to='/category/series'>
+            <Link to='/'>
               <p>Series</p>
             </Link>
           </li>

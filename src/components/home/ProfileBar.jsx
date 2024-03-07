@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 // * Redux
 import { useDispatch, useSelector } from 'react-redux'
 // * Actions
-import { signoutUser } from '../../app/features/auth/asyncThunks'
+import { isAuth, signoutUser } from '../../app/features/auth/asyncThunks'
 
 const profiles = [
   {
@@ -36,9 +36,16 @@ export const ProfileBar = ({activeMobile}) => {
     navigate('/auth/login')
   }
 
+  // ? Revalidate user
+  const revalidate = () => {
+    dispatch(isAuth())
+  }
+
   useEffect(() => {
     if (auth.email) {
       setUser(auth.email)
+    } else {
+      revalidate()
     }
   },[auth])
 

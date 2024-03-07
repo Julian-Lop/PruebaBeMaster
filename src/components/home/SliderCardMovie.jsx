@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function CustomSlide(props) {
   const { index, movie, ...otherProps } = props;
@@ -23,7 +24,15 @@ function CustomSlide(props) {
         <h4>
           {movie.overview}
         </h4>
-        <button className='Btn-two'> <i className='icon icon-add'></i> Agregar a la Lista</button>
+        <div className='Buttons-container'>
+          <button className='Btn-two'>
+            <i className='icon icon-add'></i>
+            Añadir a Lista
+          </button>
+          <Link to={'/movie/'+movie.id} className='Btn-two'>
+            Ver
+          </Link>
+        </div>
       </div>
     </div>
   );
