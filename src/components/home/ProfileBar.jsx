@@ -14,7 +14,7 @@ const profiles = [
   },
   {
     avatar: '/images/spiderman.jpg',
-    name: 'User2'
+    name: 'User3'
   },
 ]
 

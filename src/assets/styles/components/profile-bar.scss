@@ -1,5 +1,6 @@
 .Profile{
   position: fixed;
+  z-index: 2;
   top: 2%;
   right: 10px;
   margin: 0;
@@ -29,6 +30,10 @@
       animation: showProfile 0.3s;
       animation-timing-function: ease-out;
       animation-fill-mode: forwards;
+
+      @include mobile{
+        animation: none;
+      }
     }
 
     @include mobile{
@@ -38,9 +43,13 @@
   }
 
   @include mobile{
+    top: 0% !important;
+    right: 0 !important;
     width: 100%;
     height: 100%;
     display: none;
+    border: none !important;
+    background: radial-gradient(variables.$blackHomeOne 30%, variables.$blackHomeTwo);
 
     &.mobile{
       display: block;
@@ -50,8 +59,8 @@
 
 .Avatar{
   border-radius: 400px;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
   padding: 10px;
 
   @include mobile{

@@ -1,0 +1,97 @@
+.Slider-container{
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: none;
+  margin: 0 auto;
+
+  @include mobile{
+    width: 100%;
+    height: 200px;
+  }
+}
+
+.CardSlider{
+  position: relative;
+  width: 98% !important;
+  height: 370px !important;
+  margin: 0px 2%;
+  border-radius: 4px;
+  box-shadow: 0 0 6px 3px rgba(0,0,0,0.5);
+  border: 0.01mm solid variables.$blackHomeOne;
+
+  @include mobile{
+    height: 180px !important;
+    width: 95% !important;
+    margin: 10px;
+  }
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
+
+.Mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #030b17 25%, #0c111b00 150%);
+    border-radius: 4px;
+
+    @include mobile{
+      background: linear-gradient(to right, #030b17 30%, #0c111b00 100%);
+    }
+}
+
+.Info-container{
+  position: absolute;
+  z-index: 20;
+  bottom: 0;
+  width: 35%;
+  height: inherit;
+
+  padding: 30px;
+
+  color: variables.$white;
+  font-family: variables.$font2;
+
+  @include mobile{
+    padding: 10px;
+    width: 60%;
+  }
+
+  h2{
+    font-size: 28px;
+    margin: 40px 0px 20px 0px;
+    padding: 10px 0px;
+
+    @include mobile{
+      font-size: 20px;
+      margin: 20px 0px 0px 0px;
+    }
+  }
+
+  p{
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    margin: 0 auto;
+    line-height: 28px;
+    font-family: variables.$font1;
+    font-size: 16px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include mobile{
+      display: none;
+    }
+  }
+}

@@ -1,5 +1,7 @@
 .Layout{
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: max-content;
   background: radial-gradient(variables.$blackHomeOne 30%, variables.$blackHomeTwo);
+  overflow: hidden;
 }
