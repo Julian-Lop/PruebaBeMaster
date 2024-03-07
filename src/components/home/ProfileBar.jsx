@@ -9,11 +9,11 @@ import { signoutUser } from '../../app/features/auth/asyncThunks'
 
 const profiles = [
   {
-    avatar: '/images/spiderman.jpg',
+    avatar: '/images/spiderman.webp',
     name: 'User2'
   },
   {
-    avatar: '/images/spiderman.jpg',
+    avatar: '/images/spiderman.webp',
     name: 'User3'
   },
 ]
@@ -47,7 +47,7 @@ export const ProfileBar = ({activeMobile}) => {
       
       <div className='Profile-selected'>
         <label>{user}</label>
-        <img src="/images/spiderman.jpg" alt="Avatar" className='Avatar' />
+        <img src="/images/spiderman.webp" alt="Avatar" className='Avatar' />
       </div>
 
       <nav className='Profile-nav'>
@@ -60,7 +60,7 @@ export const ProfileBar = ({activeMobile}) => {
             </li>
           ))}
           <li>
-            <img src="/images/spiderman.jpg" alt="Avatar" className='Avatar' />
+            <img src="/images/spiderman.webp" alt="Avatar" className='Avatar' />
             <label>Crear Perfil</label>
           </li>
         </ul>
