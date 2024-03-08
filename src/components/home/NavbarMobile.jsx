@@ -18,8 +18,8 @@ export const NavbarMobile = ({activeOptMenu }) => {
           </NavLink>
           </li>
         <li>
-          <NavLink to="/category/2">
-            <i className='icon icon-download'></i>
+          <NavLink to="/watchlist">
+            <i className='icon icon-add'></i>
           </NavLink>
           </li>
         <li onClick={activeOptMenu}>

@@ -224,10 +224,17 @@
 
   .icon{
     background: variables.$gray-1;
+    margin-left: 2px;
+    animation: fade 0.15s;
 
     @include mobile{
       width: 18px;
       height: 18px;
+    }
+
+    &.icon-cancel{
+      width: 20px;
+      height: 25px;
     }
   }
 

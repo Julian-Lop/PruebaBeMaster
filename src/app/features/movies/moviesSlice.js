@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllMovies, getMoviesByCategory } from "./asyncThunks";
+import { addToWatchList, getAllMovies, getMoviesByCategory, getWatchList, removeFromWatchList } from "./asyncThunks";
 
 // * Async thunks
 
@@ -15,7 +15,8 @@ const initialState = {
   marvelmovies: [],
   starwarsmovies: [],
   natgeomovies: [],
-  watchlist: []
+  watchlist: [],
+  indexwatchlist: {}
 }
 
 export const moviesSlice = createSlice({
@@ -47,6 +48,55 @@ export const moviesSlice = createSlice({
         state[category] = movies
       })
       .addCase(getMoviesByCategory.rejected, (state, action) => {
+        state.status = 'failed'
+      })
+    builder
+      .addCase(getWatchList.pending, (state, action) => {
+        state.status = 'loading'
+      })
+      .addCase(getWatchList.fulfilled, (state, action) => {
+        const { watchlist } = action.payload
+
+        const idindexados = watchlist.map(({id}) => {return id})
+
+        state.status = 'succeeded'
+        state.watchlist = watchlist
+        state.indexwatchlist = idindexados.reduce((acc, curr) => {
+          acc[curr] = curr;
+          return acc;
+        }, {});
+      })
+      .addCase(getWatchList.rejected, (state, action) => {
+        state.status = 'failed'
+      })
+    builder
+      .addCase(addToWatchList.pending, (state, action) => {
+        state.status = 'loading'
+      })
+      .addCase(addToWatchList.fulfilled, (state, action) => {
+        const { idMovie } = action.payload
+        
+        console.log({payload: action.payload})
+
+        state.status = 'succeeded'
+        state.indexwatchlist[idMovie] = idMovie
+      })
+      .addCase(addToWatchList.rejected, (state, action) => {
+        state.status = 'failed'
+      })
+    builder
+      .addCase(removeFromWatchList.pending, (state, action) => {
+        state.status = 'loading'
+      })
+      .addCase(removeFromWatchList.fulfilled, (state, action) => {
+        const { idMovie } = action.payload
+
+        state.status = 'succeeded'
+        delete state.indexwatchlist[idMovie]
+        let temp = state.watchlist.filter(movie => movie.id != idMovie )
+        state.watchlist = temp
+      })
+      .addCase(removeFromWatchList.rejected, (state, action) => {
         state.status = 'failed'
       })
   }

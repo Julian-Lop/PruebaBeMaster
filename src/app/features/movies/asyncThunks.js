@@ -5,6 +5,8 @@ import { tmdbApi } from "../../../api/tmdbApi";
 const urlByCategory = 'discover/movie?'
 // ? Url by id
 const urlById = 'movie'
+// ? Url watchlist
+const urlWatchlist = 'account/21064880/watchlist'
 
 // ? Id categories
 const categories = {
@@ -38,6 +40,69 @@ export const getMoviesByCategory = createAsyncThunk('getbycategory', async (cate
     return {movies:movies.data.results,category:category+'movies'}
   }
   return false
+})
+
+export const getWatchList = createAsyncThunk('getwatchlist', async () => {
+
+  const headers = {
+    'Authorization': `Bearer ${import.meta.env.VITE_TOKEN}`
+  };
+
+  const watchlist = await tmdbApi.
+    get(`${urlWatchlist}/movies?api_key=${import.meta.env.VITE_APY_KEY_TMDB}`, { headers })
+
+  if (watchlist.data.results.length) {
+    return {watchlist:watchlist.data.results}
+  }
+
+  return false
+
+})
+
+export const addToWatchList = createAsyncThunk('addtowatchlist', async (idMovie) => {
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${import.meta.env.VITE_TOKEN}`
+  };
+
+  const data = {
+    media_type: 'movie',
+    media_id: idMovie,
+    watchlist: true 
+  }
+
+  const watchlist = await tmdbApi.post(`${urlWatchlist}?api_key=${import.meta.env.VITE_APY_KEY_TMDB}`,data,{headers})
+
+  if (watchlist.data.success) {
+    return {idMovie}
+  }
+
+  return false
+
+})
+
+export const removeFromWatchList = createAsyncThunk('removetowatchlist', async (idMovie) => {
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${import.meta.env.VITE_TOKEN}`
+  };
+
+  const data = {
+    media_type: 'movie',
+    media_id: idMovie,
+    watchlist: false
+  }
+
+  const watchlist = await tmdbApi.post(`${urlWatchlist}?api_key=${import.meta.env.VITE_APY_KEY_TMDB}`,data,{headers})
+
+  if (watchlist.data.success) {
+    return {idMovie}
+  }
+
+  return false
+
 })
 
 

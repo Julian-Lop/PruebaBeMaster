@@ -24,7 +24,7 @@ export const Header = () => {
           </li>
 
           <li>
-            <Link to=''>
+            <Link to='/watchlist'>
               <p>Mi lista</p>
             </Link>
           </li>

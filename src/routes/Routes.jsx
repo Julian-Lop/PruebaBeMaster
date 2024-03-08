@@ -1,4 +1,8 @@
-import  { createBrowserRouter, redirect } from "react-router-dom"
+// * React router
+import { createBrowserRouter, redirect } from "react-router-dom"
+
+// * Action
+import { isAuthenticated } from "../app/features/auth/asyncThunks";
 
 // * Pages
 import { CategoryPage, HomePage, LoginPage, NotFoundPage, RegisterPage } from "../pages"
@@ -7,9 +11,8 @@ import { CategoryPage, HomePage, LoginPage, NotFoundPage, RegisterPage } from ".
 import { AuthLayout } from "../components"
 import { Layout } from "../components/layouts/Layout";
 import { MoviePage } from "../pages/MoviePage";
+import { WatchlistPage } from "../pages/WatchlistPage";
 
-// * Action
-import { isAuthenticated } from "../app/features/auth/asyncThunks";
 
 // * Routes
 const router = createBrowserRouter(
@@ -51,6 +54,15 @@ const router = createBrowserRouter(
             else throw redirect('/auth/login')
           },
           element: <MoviePage />
+        },
+        {
+          path: '/watchlist',
+          loader: async () => {
+            const res = await isAuthenticated()
+            if (res) return true
+            else throw redirect('/auth/login')
+          },
+          element: <WatchlistPage/>
         },
       ]
     },

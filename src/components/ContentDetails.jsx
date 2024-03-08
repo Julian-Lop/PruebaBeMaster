@@ -1,8 +1,23 @@
 import React from 'react'
 
+// * Redux
+import { useDispatch, useSelector } from 'react-redux'
+// * Actions
+import { addToWatchList, removeFromWatchList } from '../app/features/movies/asyncThunks'
+
 export const ContentDetails = ({ movie }) => {
-  
-  if(!movie) return <>'Loading...'</>
+
+  const ids = useSelector(state => state.movies.indexwatchlist)
+
+  const dispatch = useDispatch()
+
+  const addWatchlist = () => {
+    dispatch(addToWatchList(movie.id))
+  }
+
+  const removeWatchlist = () => {
+    dispatch(removeFromWatchList(movie.id))
+  }
 
   return (
     <section className='Content-details'>
@@ -35,8 +50,9 @@ export const ContentDetails = ({ movie }) => {
             Play
           </button>
           <div className='Buttons-opts'>
-            <button className='Btn-opt'>
-              <i className='icon icon-add' ></i>
+            <button className='Btn-opt' onClick={!ids[movie.id] ? addWatchlist : removeWatchlist}>
+              {!ids[movie.id] && <i className='icon icon-add' ></i>}
+              {ids[movie.id] && <i className='icon icon-cancel' ></i>}
               Lista
             </button>
             <button className='Btn-opt'>

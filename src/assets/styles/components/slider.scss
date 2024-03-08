@@ -213,6 +213,7 @@
 .Buttons-container{
   width: 80%;
   position: absolute;
+  bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -221,7 +222,7 @@
     width: 100%;
     bottom: 15px;
     left: 0;
-    flex-direction: column;
+    justify-content: space-evenly;
     gap: 6px;
   }
 
@@ -229,6 +230,7 @@
 
 .Btn-two{
   position: relative;
+  min-width: 40px;
   width: max-content;
   height: inherit;
   text-transform: capitalize;
@@ -236,7 +238,7 @@
   border: none;
   color: rgba(variables.$white,0.5);
   cursor: pointer;
-  padding: 5px;
+  padding: 5px 5px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -256,12 +258,31 @@
   .icon{
     width: 16px;
     height: 16px;
+
+    @include mobile{
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  p{
+    margin-left: 2px;
   }
 
   @include mobile{
-    padding: 2.5px;
-    font-size: 10px;
-    background: rgba(255,255,255, 0.5);
-    color: variables.$white;
+    min-width: 40%;
+    height: max-content;
+    padding: 5px 2.5px;
+    justify-content: center;
+
+    &:hover{
+      background: rgba(255,255,255, 0.5);
+      color: variables.$white;
+    }
+
+    p{
+      display: none;
+    }
   }
+  
 }
