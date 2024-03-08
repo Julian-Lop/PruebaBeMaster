@@ -46,9 +46,11 @@ En el Home se visualiza:
 
 Al dar click en alguna de las tarjetas de Categorías se redirige a la ruta con la categoría seleccionada, en esta ruta hay un componente que muestra en filas las películas correspondientes.
 
-Al dar click en el botón "Ver" de alguna de las tarjetas de las películas, se redirige a una pagína con el contenido multimedia y demás información correspondiente a la película.
+Al dar click en el botón "Ver" de alguna de las tarjetas de las películas, se redirige a una pagína con el contenido multimedia y demás información correspondiente a la película. A l darle click en el botón + Añadir a Lista, se agrega a la lista y se puedde visualizar en el componente WatchlistPage.
 
 Desde el botón flotante se puede Cerrar Sesión.
+
+La barra de navegación permite ir al Home, a la categoría originals, ir a Mi lista.
 
 ## Construcción del proyecto
 
@@ -56,6 +58,6 @@ Se compone de una aplicación React con Redux, Axios, librerías para componente
 
 Usa el servicio de Firebase Authentication para la autenticación de usuarios.
 
-La Api TMDB para el consumo del contenido multimedia de las películas.
+La Api TMDB para el consumo del contenido multimedia de las películas y la Watachlist.
 
 El diseño del proyecto se hace tomando como inspiración la app Disney plus.
